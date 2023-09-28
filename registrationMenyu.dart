@@ -70,7 +70,7 @@ void main() {
     print("                          _--_  |--| |--| |--| |--|");
     print("                          |   | |-----------------|");
     print("                           |   | ----------------| ");
-    print("                             |  ---------BUY-----| ");
+    print("                             |  ---------BYE-----| ");
     print("                               |----------------|  ");
     exit(0);
   }
@@ -112,9 +112,9 @@ void main() {
         print(
             "              |-----------------------------------------------|");
         print(
-            "              |>>>>>>>>>Siz registratsiya bolgansiz<<<<<<<<<<<|");
+            "              |>>>>>>>>Siz registratsiya bo'lgansiz<<<<<<<<<<<|");
         print(
-            "              |>>>>>>>>SIGNIN QILISHINGIZNI SORAYMIZ<<<<<<<<<<|");
+            "              |>>>>>>>>SIGNIN QILISHINGIZNI SO'RAYMIZ<<<<<<<<<|");
         print(
             "              |-----------------------------------------------|");
       }
