@@ -35,17 +35,90 @@ class Person {
   String toString() => "Person($name,$birthdate,$email,$password)";
 }
 
+// ---------=-======  Function for checking @gmail ------------------------------
+String getUserEmail(String userEmail) {
+  do {
+    print("                             |---------------------|");
+    print("                             |  Enter your email:  |");
+    print("                             |---------------------|");
+    print("\n");
+    print("-----👇");
+    userEmail = stdin.readLineSync()!;
+
+    if (userEmail == "jon81824@gmail.com" || userEmail == "alex0021@gmail.com") {
+      print(
+          "              |-----------------------------------------------|");
+      print(
+          "              |>>>You have already entered an incorrect date<<|");
+      print(
+          "              |>>>>>>>>       Please sign in        <<<<<<<<<<|");
+      print(
+          "              |-----------------------------------------------|");
+    }
+    if (!userEmail.endsWith("@gmail.com")) {
+      print(
+          "              |-----------------------------------------------|");
+      print(
+          "              |          Must end with => @gmail.com          |");
+      print(
+          "              |-----------------------------------------------|");
+    }
+    if(userEmail.length < 16){
+      print(
+          "              |-----------------------------------------------|");
+      print(
+          "              |              Gmail is too short !             |");
+      print(
+          "              |  Gmail should be more than 6 characters !     |");
+      print(
+          "              |-----------------------------------------------|");
+    }
+  } while (!(userEmail.endsWith("@gmail.com")) || userEmail.length < 16);
+
+  return userEmail;
+}
+// ----------------------------------------------------------------------------
+
+// ------------ Function for checking password -----------------------------------
+String getPassword() {
+  stdout.write('                        Please enter a password again \n');
+  return stdin.readLineSync()!;
+}
+bool isStrongPassword(String password) {
+  RegExp lowercaseRegex = RegExp(r'[a-z]');
+  RegExp uppercaseRegex = RegExp(r'[A-Z]');
+  RegExp digitRegex = RegExp(r'[0-9]');
+
+  if (password.length < 8) {
+    return false;
+  }
+
+  if (!lowercaseRegex.hasMatch(password) ||
+      !uppercaseRegex.hasMatch(password) ||
+      !digitRegex.hasMatch(password)) {
+    return false;
+  }
+
+  return true;
+}
+// --------------------------------------------------------------------------------
+
 void main() {
-  print("                                 |--------------------|");
-  print("                                 | ENTER 1 for SIGNUP |");
-  print("                                 | ENTER 2 for SIGNIN |");
-  print("                                 | ENTER 3 FOR LOGOUT |");
-  print("                                 | ENTER 4 FOR  EXIT  |");
-  print("                                 |--------------------|");
-  print("👇 1️⃣  ||  2️⃣  ||  3️⃣  ||  4️⃣  ");
+
+  print("                                 |-------------------|");
+  print("                                 | ENTER 1 to SIGNUP |");
+  print("                                 | ENTER 2 to SIGNIN |");
+  print("                                 | ENTER 3 to  EXIT  |");
+  print("                                 |-------------------|");
+  print("👇 1️⃣  ||  2️⃣  ||  3️⃣ ");
   int number = int.parse(stdin.readLineSync()!);
 
-  if (number == 4) {
+      while(!(number > 0 && number < 4)){
+        print("You entered an invalid value!\nPlease try again!\n");
+  number = int.parse(stdin.readLineSync()!);
+      }
+
+  if (number == 3) {
     print("                                     _--_          ");
     print("                                _--_ |--| _--_     ");
     print("                                |--| |--| |--| _--_");
@@ -53,8 +126,11 @@ void main() {
     print("                          _--_  |--| |--| |--| |--|");
     print("                          |   | |-----------------|");
     print("                           |   | ----------------| ");
-    print("                             |  ---------BUY-----| ");
+    print("                             |  ---See you soon--| ");
     print("                               |----------------|  ");
+    print("                  |------------------------------------------|");
+    print("                  |-----    Thank you to use our app     ----|");
+    print("                  |------------------------------------------|");
     exit(0);
   }else if (number == 1) {
     // Input for name.
@@ -69,13 +145,13 @@ void main() {
 
       if (userName.length < 3 || userName.length > 30) {
         print(
-            "              |-----------------------------------------------|");
+            "              |------------------------------------------------|");
         print(
-            "              |     ISMINGIZ 8'tadan koproq bo'lishi kerak    |");
+            "              | Name lenght must be more than 2 and no more 30 |");
         print(
-            "              |-----------------------------------------------|");
+            "              |------------------------------------------------|");
       }
-    } while (userName.length < 8 && userName.length < 30);
+    } while (userName.length < 3 || userName.length > 30);
     print("\n");
     // Input for birthdate.
      String userInput = '';
@@ -87,7 +163,7 @@ void main() {
     print("                            |----------------------|");
 
     print("                            |----------------------|");
-    print("      ESLATMA             |       2023-12-12         |");
+    print("                 Enter as |       2023-12-12         |");
     print("                            |----------------------|");
     print("\n");
     print("-----👇-----");
@@ -101,7 +177,7 @@ void main() {
       print(
           "              |-----------------------------------------------|");
       print(
-          "              |            NOTO'G'RI SANA KIRDINGIZ            |");
+          "              |         You have entered an incorrect date    |");
       print(
           "              |-----------------------------------------------|");
     }
@@ -113,40 +189,12 @@ void main() {
 
     // Input for email.
 
-    String userEmail = '';
-
-    do {
-      print("                             |---------------------|");
-      print("                             |  Enter your email:  |");
-      print("                             |---------------------|");
-      print("\n");
-      print("-----👇");
-      userEmail = stdin.readLineSync() ?? '';
-
-      if (userEmail == "jon81824@gmail.com" ||
-          userEmail == "alex0021@gmail.com") {
-        print(
-            "              |-----------------------------------------------|");
-        print(
-            "              |>>>>>>>>>Siz registratsiya bolgansiz<<<<<<<<<<<|");
-        print(
-            "              |>>>>>>>>SIGNIN QILISHINGIZNI SORAYMIZ<<<<<<<<<<|");
-        print(
-            "              |-----------------------------------------------|");
-      }
-      if (!userEmail.endsWith("@gmail.com")) {
-        print(
-            "              |-----------------------------------------------|");
-        print(
-            "              |       @gmail.com => bilan tugashi shart       |");
-        print(
-            "              |-----------------------------------------------|");
-      }
-    } while (!userEmail.endsWith("@gmail.com") && userEmail.length > 10);
+  String userEmail = '';
+  userEmail = getUserEmail(userEmail);
 
     // Input for password
     String userPassword = "";
-    do {
+    
       print("                            |----------------------|");
       print("                            | Enter your password: |");
       print("                            |----------------------|");
@@ -154,27 +202,40 @@ void main() {
       print("-----🔑-----");
       userPassword = stdin.readLineSync()!;
 
-      if (userPassword.length < 8) {
-        print(
-            "              |-----------------------------------------------|");
-        print(
-            "              |   Parolingiz 8'tadan koproq bo'lishi kerak    |");
-        print(
-            "              |-----------------------------------------------|");
-      }
-    } while (userPassword.length < 8);
+    bool isPasswordValid = false;
+  
+  while (!isPasswordValid) {
+    userPassword = getPassword();
+  
+    if (isStrongPassword(userPassword)) {
+      print('                        -- Password successfully accepted --\n');
+      isPasswordValid = true;
+    } else {
+print("""                            -----------------------------------------
+                            |  Incorrect  password!                 |
+                            -----------------------------------------
+                            | The password must contain             |  
+                            | uppercase letters, lowercase letters, |
+                            | and numbers, and the password         |
+                            | must be at least 8 characters long    |\n""");
+    }
+  }
+
+
     print(
         "                  |-----------------------------------------------|");
     print(
-        "                  |---------🎉🎉🎉SIGNUP successfully🎉🎉🎉---------|");
+        "                  |------🎉🎉🎉SIGNUP successfully🎉🎉🎉-------|");
     print(
         "                  |-----------------------------------------------|");
 
     print("YOUR EMAIL $userEmail");
-    print("IF YOU WANT TO LOGOUT PRESS 1");
+    print("TO LOGOUT PRESS 1\n To exit PREES 2\n");
 
     int press = int.parse(stdin.readLineSync()!);
     if (press == 1) {
+      main();
+    }else if(press == 2){
       exit(0);
     }
 
@@ -186,33 +247,13 @@ void main() {
     );
 
     print(human);
-  }else if (number == 2) {
+  }
+  else if (number == 2) {
+    // input @gmail
     String userEmail2 = '';
-
-    do {
-      print("                            |---------------------|");
-      print("                            |  Enter your email:  |");
-      print("                            |---------------------|");
-      print("\n");
-      print("-----👇");
-      userEmail2 = stdin.readLineSync() ?? '';
-
-      if(userEmail2 == "jon81824@gmail.com"||userEmail2 == "alex0021@gmail.com"){
-        if (!userEmail2.endsWith("@gmail.com")) {
-        print(
-            "                 |-----------------------------------------------|");
-        print(
-            "                 |       @gmail.com => bilan tugashi shart       |");
-        print(
-            "                 |-----------------------------------------------|");
-      }
-      }
-      
-    } while (!userEmail2.endsWith("@gmail.com"));
-
+    userEmail2 = getUserEmail(userEmail2);
     // Input for password
     String userPassword;
-    do {
       print("                            |----------------------|");
       print("                            | Enter your password: |");
       print("                            |----------------------|");
@@ -220,27 +261,38 @@ void main() {
       print("-----🔑-----");
       userPassword = stdin.readLineSync()!;
 
-      if (userPassword.length < 8) {
-        print(
-            "              |-----------------------------------------------|");
-        print(
-            "              |   Parolingiz 8'tadan koproq bo'lishi kerak    |");
-        print(
-            "              |-----------------------------------------------|");
-      }
-    } while (userPassword.length < 8);
+    bool isPasswordValid = false;
+  
+  while (!isPasswordValid) {
+    userPassword = getPassword();
+  
+    if (isStrongPassword(userPassword)) {
+      print('                        -- Password successfully accepted --\n');
+      isPasswordValid = true;
+    } else {
+print("""                            -----------------------------------------
+                            |  Incorrect  password!                 |
+                            -----------------------------------------
+                            | The password must contain             |  
+                            | uppercase letters, lowercase letters, |
+                            | and numbers, and the password         |
+                            | must be at least 8 characters long    |\n""");
+    }
+  }
     print(
         "                  |-----------------------------------------------|");
     print(
-        "                  |---------🎉🎉🎉SIGNIN successfully🎉🎉🎉---------|");
+        "                  |------🎉🎉🎉SIGNIN successfully🎉🎉🎉-------|");
     print(
         "                  |-----------------------------------------------|");
 
     print(" YOUR EMAIL $userEmail2");
-    print("IF YOU WANT TO LOGOUT PRESS 1");
+    print("TO LOGOUT PRESS 1\n To exit PREES 2\n");
 
     int press = int.parse(stdin.readLineSync()!);
     if (press == 1) {
+      main();
+    }else if(press == 2){
       exit(0);
     }
     var human = UPperson(
@@ -249,10 +301,5 @@ void main() {
     );
 
     print(human);
-  }else if (number == 3) {
-    print("                  |------------------------------------------|");
-    print("                  |-------⛔⛔⛔YOU CAN NOT LOGOUT⛔⛔⛔-------|");
-    print("                  |----------FIRST YOU HAVE TO SIGNIN--------|");
-    print("                  |------------------------------------------|");
   }
 }
