@@ -81,7 +81,6 @@ String getUserEmail(String userEmail) {
 
 // ------------ Function for checking password -----------------------------------
 String getPassword() {
-  stdout.write('                        Please enter a password again \n');
   return stdin.readLineSync()!;
 }
 bool isStrongPassword(String password) {
@@ -200,7 +199,6 @@ void main() {
       print("                            |----------------------|");
       print("\n");
       print("-----🔑-----");
-      userPassword = stdin.readLineSync()!;
 
     bool isPasswordValid = false;
   
@@ -253,13 +251,12 @@ print("""                            -----------------------------------------
     String userEmail2 = '';
     userEmail2 = getUserEmail(userEmail2);
     // Input for password
-    String userPassword;
+    String userPassword ='';
       print("                            |----------------------|");
       print("                            | Enter your password: |");
       print("                            |----------------------|");
       print("\n");
       print("-----🔑-----");
-      userPassword = stdin.readLineSync()!;
 
     bool isPasswordValid = false;
   
